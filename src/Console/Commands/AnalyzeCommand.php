@@ -14,7 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class AnalyzeCommand extends Command
 {
-    protected $signature = 'architect:analyze 
+    protected $signature = 'architect:analyze
                             {path? : Specific path or file to analyze (defaults to base_path())}
                             {--only= : Comma-separated list of types to analyze (e.g. controllers,models)}
                             {--format= : The output format (console, json, html)}
@@ -37,7 +37,7 @@ class AnalyzeCommand extends Command
         $pathArg = $this->argument('path');
         $basePath = $pathArg ? (file_exists($pathArg) ? $pathArg : base_path($pathArg)) : base_path();
 
-        /** @var string|null $onlyOption */
+        /** @var string|null $onlyOption */ 
         $onlyOption = $this->option('only');
         $only = $onlyOption ? explode(',', $onlyOption) : [];
 
@@ -123,10 +123,10 @@ class AnalyzeCommand extends Command
             $baseDir = base_path((string)$baseDir);
         }
 
-        return rtrim((string)$baseDir, '\\/') 
-            . DIRECTORY_SEPARATOR 
-            . trim(config('artisan-architect.output.reports_directory', 'reports'), '\\/') 
-            . DIRECTORY_SEPARATOR 
+        return rtrim((string)$baseDir, '\\/')
+            . DIRECTORY_SEPARATOR
+            . trim(config('artisan-architect.output.reports_directory', 'reports'), '\\/')
+            . DIRECTORY_SEPARATOR
             . $output;
     }
 
